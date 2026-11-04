@@ -1,25 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-krmu-red: #CB000D;
-  --color-krmu-red-dark: #a8000b;
-  --color-krmu-navy: #010A1B;
-  --color-krmu-navy-light: #0a1929;
-  --color-krmu-hover: #034272;
-  --color-krmu-light: #f0f4f8;
-  --color-krmu-gold: #d4a843;
-  --color-krmu-accent: #1a3a5c;
-  --color-krmu-card: #ffffff;
-  --color-krmu-border: #e2e8f0;
-  --color-krmu-text: #1e293b;
-  --color-krmu-text-light: #64748b;
-  --color-krmu-success: #059669;
-  --color-krmu-warning: #d97706;
-  --color-krmu-lost: #dc2626;
-  --color-krmu-found: #166534;
+  --color-krmu-red: #E11D48;
+  --color-krmu-red-dark: #BE123C;
+  --color-krmu-navy: #0F172A;
+  --color-krmu-navy-light: #1E293B;
+  --color-krmu-hover: #1D4ED8;
+  --color-krmu-light: #F8FAFC;
+  --color-krmu-gold: #F59E0B;
+  --color-krmu-accent: #2563EB;
+  --color-krmu-card: #FFFFFF;
+  --color-krmu-border: #E2E8F0;
+  --color-krmu-text: #0F172A;
+  --color-krmu-text-light: #64748B;
+  --color-krmu-success: #10B981;
+  --color-krmu-warning: #F59E0B;
+  --color-krmu-lost: #E11D48;
+  --color-krmu-found: #10B981;
 
-  --font-montserrat: 'Montserrat', sans-serif;
+  --font-montserrat: 'Plus Jakarta Sans', 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 * {
@@ -33,33 +33,34 @@ html {
 }
 
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: var(--font-montserrat);
   color: var(--color-krmu-text);
-  background-color: #ffffff;
+  background-color: #F8FAFC;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 7px;
+  height: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--color-krmu-light);
+  background: #F1F5F9;
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-krmu-navy);
-  border-radius: 4px;
+  background: #CBD5E1;
+  border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-krmu-hover);
+  background: #94A3B8;
 }
 
 /* Animations */
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(16px);
   }
   to {
     opacity: 1;
@@ -72,57 +73,45 @@ body {
   to { opacity: 1; }
 }
 
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes pulse-soft {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-}
-
-@keyframes countUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
 }
 
 .animate-fade-in-up {
-  animation: fadeInUp 0.6s ease-out forwards;
+  animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.4s ease-out forwards;
+  animation: fadeIn 0.3s ease-out forwards;
 }
 
-.animate-slide-in-left {
-  animation: slideInLeft 0.5s ease-out forwards;
+.animate-float {
+  animation: floatSlow 6s ease-in-out infinite;
 }
 
-/* Stagger children */
-.stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
-.stagger-children > *:nth-child(2) { animation-delay: 0.2s; }
-.stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
-.stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
-
-/* Glass effect */
-.glass {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+/* Modern Glass & Surface Utilities */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
 }
 
-/* Red line separator like KRMU */
-.krmu-separator {
-  width: 60px;
-  height: 3px;
-  background: var(--color-krmu-red);
-  margin: 12px 0;
+.glass-dark {
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.subtle-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.625rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1rem;
 }
